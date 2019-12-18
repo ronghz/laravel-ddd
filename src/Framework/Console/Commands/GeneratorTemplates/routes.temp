@@ -1,0 +1,4 @@
+<?php
+Route::group(['prefix' => '{{port}}/{{domain}}', 'namespace' => 'App\Domain\{{Domain}}\Ports\{{Port}}\Controllers'], function ($router) {
+
+});

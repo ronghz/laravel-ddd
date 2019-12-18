@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Domain\{{Domain}}\Ports\{{Port}}\Controllers;
+
+use App\Supports\BaseController\{{Port}}Controller;
+use App\Domain\{{Domain}}\Services\{{Model}}Service as DomainService;
+use App\Domain\{{Domain}}\Ports\{{Port}}\Services\{{Model}}Service as AppService;
+
+class {{Model}}Controller extends {{Port}}Controller
+{
+    /** @var AppService */
+    protected $appService = null;
+
+    /** @var DomainService */
+    protected $domainService = null;
+}

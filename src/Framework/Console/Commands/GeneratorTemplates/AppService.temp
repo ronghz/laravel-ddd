@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Domain\{{Domain}}\Ports\{{Port}}\Services;
+
+use Ronghz\LaravelDdd\Framework\Base\DddAppService;
+use App\Domain\{{Domain}}\Repositories\{{Model}}Repository;
+use App\Domain\{{Domain}}\Services\{{Model}}Service as DomainService;;
+
+class {{Model}}Service extends DddAppService
+{
+
+    /** @var {{Model}}Repository */
+    protected $repository = null;
+
+    /** @var DomainService */
+    protected $service = null;
+}

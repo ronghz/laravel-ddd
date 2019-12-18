@@ -1,0 +1,30 @@
+{
+    "name": "ronghz/laravel-ddd",
+    "type": "library",
+    "description": "Domain Driven Design Framework for Laravel",
+    "keywords": ["laravel", "ddd", "domain driven"],
+    "homepage": "https://github.com/ronghz/laravel-ddd",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joe Rong"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^6.2",
+        "schulzefelix/laravel-data-transfer-object": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ronghz\\LaravelDdd\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ronghz\\LaravelDdd\\LaravelDddServiceProvider"
+            ]
+        }
+    }
+}

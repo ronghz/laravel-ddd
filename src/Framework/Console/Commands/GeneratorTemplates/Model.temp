@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Domain\{{Domain}}\Models;
+
+use Ronghz\LaravelDdd\Framework\Base\DddModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class {{Model}} extends DddModel
+{
+    use SoftDeletes;
+
+    protected $table = '{{table}}';
+
+    protected $fillable = [
+        {{fillable}}
+    ];
+}

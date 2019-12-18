@@ -1,0 +1,10 @@
+<?php
+namespace App\Domain\{{Domain}}\Dtos;
+
+use Ronghz\LaravelDdd\Framework\Base\DddDto;
+use App\Domain\{{Domain}}\Models\{{Model}};
+
+class {{Model}}Dto extends DddDto
+{
+    {{property}}
+}

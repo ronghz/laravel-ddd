@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Domain\{{Domain}}\Repositories;
+
+use Ronghz\LaravelDdd\Framework\Base\DddRepository;
+use App\Domain\{{Domain}}\Models\{{Model}};
+
+class {{Model}}Repository extends DddRepository
+{
+    /** @var {{Model}} */
+    protected $model = null;
+}

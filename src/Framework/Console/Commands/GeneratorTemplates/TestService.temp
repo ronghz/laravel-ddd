@@ -1,0 +1,16 @@
+<?php
+namespace Tests\{{Domain}}\Services;
+
+use App\Domain\{{Domain}}\Services\{{Model}}Service;
+
+class {{Model}}ServiceTest extends \TestCase
+{
+    /** @var {{Model}}Service */
+    private $service;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->service = app({{Model}}Service::class);
+    }
+}

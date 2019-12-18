@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Domain\{{Domain}}\Resources;
+
+use Ronghz\LaravelDdd\Framework\Base\DddResource;
+
+class {{Model}}Resource extends DddResource
+{
+    public function toArray($request)
+    {
+
+    }
+}

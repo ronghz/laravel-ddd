@@ -1,0 +1,16 @@
+<?php
+namespace Tests\{{Domain}}\Ports\Cross;
+
+use App\Domain\{{Domain}}\Ports\Cross\{{Model}}Cross;
+
+class {{Model}}CrossDomainTest extends \TestCase
+{
+    /** @var {{Model}}Cross */
+    private $service;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->service = app({{Model}}Cross::class);
+    }
+}

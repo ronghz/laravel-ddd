@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Domain\{{Domain}}\Ports\Cross;
+
+use Ronghz\LaravelDdd\Framework\Base\DddCrossDomain;
+use App\Domain\{{Domain}}\Services\{{Model}}Service;
+
+class {{Model}}Cross extends DddCrossDomain
+{
+
+    /** @var {{Model}}Service */
+    protected $domainService = null;
+}

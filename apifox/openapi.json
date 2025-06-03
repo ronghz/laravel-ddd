@@ -1,0 +1,1774 @@
+{
+  "info": {
+    "title": "git 连接",
+    "description": "这里是 OAS 描述...",
+    "version": "1.0.0",
+    "x-ext-example": "这里是示例 OAS info 的扩展"
+  },
+  "tags": [
+    {
+      "name": "pet"
+    },
+    {
+      "name": "store"
+    },
+    {
+      "name": "user"
+    }
+  ],
+  "paths": {
+    "/pet/{petId}/uploadImage": {
+      "post": {
+        "summary": "uploads an image",
+        "deprecated": false,
+        "description": "",
+        "operationId": "uploadFile",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to update",
+            "required": true,
+            "format": "int64",
+            "type": "integer",
+            "x-example": 0
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "additionalMetadata",
+            "in": "formData",
+            "type": "string",
+            "description": "Additional data to pass to server"
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "format": "binary",
+            "type": "string",
+            "description": "file to upload"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/pet": {
+      "post": {
+        "summary": "Add a new pet to the store",
+        "deprecated": false,
+        "description": "",
+        "operationId": "addPet",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "summary": "Update an existing pet",
+        "deprecated": false,
+        "description": "",
+        "operationId": "updatePet",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "Pet not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "405": {
+            "description": "Validation exception",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/pet/findByStatus": {
+      "get": {
+        "summary": "Finds Pets by status",
+        "deprecated": false,
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "findPetsByStatus",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/pet/findByTags": {
+      "get": {
+        "summary": "Finds Pets by tags",
+        "deprecated": true,
+        "description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+        "operationId": "findPetsByTags",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Tags to filter by",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/pet/{petId}": {
+      "get": {
+        "summary": "Find pet by ID",
+        "deprecated": false,
+        "description": "Returns a single pet",
+        "operationId": "getPetById",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "format": "int64",
+            "type": "integer",
+            "x-example": 0
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "Pet not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "x-404:记录不存在": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          },
+          "x-400:参数不正确": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "summary": "Updates a pet in the store with form data",
+        "deprecated": false,
+        "description": "",
+        "operationId": "updatePetWithForm",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet that needs to be updated",
+            "required": true,
+            "format": "int64",
+            "type": "integer",
+            "x-example": 0
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "type": "string",
+            "description": "Updated name of the pet"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "type": "string",
+            "description": "Updated status of the pet"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "Deletes a pet",
+        "deprecated": false,
+        "description": "",
+        "operationId": "deletePet",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "Pet id to delete",
+            "required": true,
+            "format": "int64",
+            "type": "integer",
+            "x-example": 0
+          },
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "Pet not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/store/inventory": {
+      "get": {
+        "summary": "Returns pet inventories by status",
+        "deprecated": false,
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "tags": [
+          "store"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/store/order": {
+      "post": {
+        "summary": "Place an order for a pet",
+        "deprecated": false,
+        "description": "",
+        "operationId": "placeOrder",
+        "tags": [
+          "store"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "400": {
+            "description": "Invalid Order",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/store/order/{orderId}": {
+      "get": {
+        "summary": "Find purchase order by ID",
+        "deprecated": false,
+        "description": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+        "operationId": "getOrderById",
+        "tags": [
+          "store"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of pet that needs to be fetched",
+            "required": true,
+            "format": "int64",
+            "minimum": 1,
+            "maximum": 10,
+            "type": "integer",
+            "x-example": 0
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "Delete purchase order by ID",
+        "deprecated": false,
+        "description": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+        "operationId": "deleteOrder",
+        "tags": [
+          "store"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of the order that needs to be deleted",
+            "required": true,
+            "format": "int64",
+            "minimum": 1,
+            "type": "integer",
+            "x-example": 0
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user/createWithList": {
+      "post": {
+        "summary": "Creates list of users with given input array",
+        "deprecated": false,
+        "description": "",
+        "operationId": "createUsersWithListInput",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserArray"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user/{username}": {
+      "get": {
+        "summary": "Get user by user name",
+        "deprecated": false,
+        "description": "",
+        "operationId": "getUserByName",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Invalid username supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "summary": "Updated user",
+        "deprecated": false,
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "name that need to be updated",
+            "required": true,
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid user supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "Delete user",
+        "deprecated": false,
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deleteUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be deleted",
+            "required": true,
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid username supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user/login": {
+      "get": {
+        "summary": "Logs user into the system",
+        "deprecated": false,
+        "description": "",
+        "operationId": "loginUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "The user name for login",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "The password for login in clear text",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-Expires-After": {
+                "description": "date in UTC when token expires",
+                "type": "string",
+                "format": "date-time"
+              },
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user/logout": {
+      "get": {
+        "summary": "Logs out current logged in user session",
+        "deprecated": false,
+        "description": "",
+        "operationId": "logoutUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user/createWithArray": {
+      "post": {
+        "summary": "Creates list of users with given input array",
+        "deprecated": false,
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserArray"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user": {
+      "post": {
+        "summary": "Create user",
+        "deprecated": false,
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "format": "uuid",
+            "type": "string",
+            "x-example": ""
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "enum": [
+              "zh",
+              "en"
+            ],
+            "type": "string",
+            "x-example": "zh"
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "default": "{{X-Project-Uuid}}",
+            "type": "string",
+            "x-example": "{{X-Project-Uuid}}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "security": [],
+  "x-ext-example": "这里是示例 OAS 扩展",
+  "swagger": "2.0",
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "petId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "shipDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order Status",
+          "enum": [
+            "placed",
+            "approved",
+            "delivered"
+          ]
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "xml": {
+        "name": "Order"
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "User Status"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Pet": {
+      "type": "object",
+      "required": [
+        "name",
+        "photoUrls"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "name": {
+          "type": "string",
+          "examples": [
+            "doggie"
+          ]
+        },
+        "photoUrls": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "type": "string",
+            "xml": {
+              "name": "photoUrl"
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Tag"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "pet status in the store",
+          "enum": [
+            "available",
+            "pending",
+            "sold"
+          ]
+        }
+      },
+      "xml": {
+        "name": "Pet"
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Category"
+      }
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tag"
+      }
+    },
+    "UserArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "有 空格的": {
+      "type": "object",
+      "properties": {}
+    },
+    "公共结构": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "非0代表异常"
+        },
+        "message": {
+          "type": "string",
+          "description": "消息提示"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "AllOf": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Tag"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "ID 编号"
+            },
+            "name": {
+              "type": "string",
+              "description": "名称"
+            }
+          },
+          "required": [
+            "id",
+            "name"
+          ]
+        }
+      ]
+    },
+    "String": {
+      "type": "string"
+    },
+    "RefString": {
+      "$ref": "#/definitions/String"
+    },
+    "RefObject": {
+      "$ref": "#/definitions/%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84"
+    }
+  },
+  "securityDefinitions": {
+    "SessionAuth": {
+      "type": "apiKey",
+      "name": "session_token",
+      "in": "header"
+    },
+    "PATAuth": {
+      "type": "apiKey",
+      "name": "pat_token",
+      "in": "header"
+    },
+    "LegacySessionAuth": {
+      "type": "apiKey",
+      "name": "legacy_session_token",
+      "in": "header"
+    }
+  },
+  "x-components": {}
+}

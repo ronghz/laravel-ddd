@@ -1,9 +1,9 @@
 {
+  "openapi": "3.0.1",
   "info": {
     "title": "git 连接",
-    "description": "这里是 OAS 描述...",
-    "version": "1.0.0",
-    "x-ext-example": "这里是示例 OAS info 的扩展"
+    "description": "",
+    "version": "1.0.0"
   },
   "tags": [
     {
@@ -32,68 +32,83 @@
             "in": "path",
             "description": "ID of pet to update",
             "required": true,
-            "format": "int64",
-            "type": "integer",
-            "x-example": 0
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "additionalMetadata",
-            "in": "formData",
-            "type": "string",
-            "description": "Additional data to pass to server"
-          },
-          {
-            "name": "file",
-            "in": "formData",
-            "format": "binary",
-            "type": "string",
-            "description": "file to upload"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "$ref": "#/definitions/ApiResponse"
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "additionalMetadata": {
+                    "description": "Additional data to pass to server",
+                    "type": "string",
+                    "example": ""
+                  },
+                  "file": {
+                    "description": "file to upload",
+                    "type": "string",
+                    "format": "binary",
+                    "example": ""
+                  }
+                }
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       }
     },
     "/pet": {
@@ -111,54 +126,60 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/Pet"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
-        "responses": {
-          "405": {
-            "description": "Invalid input",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "405": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       },
       "put": {
         "summary": "Update an existing pet",
@@ -174,70 +195,84 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/Pet"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
-          },
-          "404": {
-            "description": "Pet not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
-          },
-          "405": {
-            "description": "Validation exception",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Pet not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "405": {
+            "description": "Validation exception",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       }
     },
     "/pet/findByStatus": {
@@ -255,71 +290,83 @@
             "in": "query",
             "description": "Status values that need to be considered for filter",
             "required": true,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "available",
-                "pending",
-                "sold"
-              ],
-              "default": "available"
-            },
-            "collectionFormat": "multi"
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "available",
+                  "pending",
+                  "sold"
+                ],
+                "default": "available"
+              }
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Pet"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet"
+                  }
+                }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Invalid status value",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/pet/findByTags": {
@@ -337,65 +384,77 @@
             "in": "query",
             "description": "Tags to filter by",
             "required": true,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi"
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Pet"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet"
+                  }
+                }
               }
-            }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Invalid tag value",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/pet/{petId}": {
@@ -413,106 +472,131 @@
             "in": "path",
             "description": "ID of pet to return",
             "required": true,
-            "format": "int64",
-            "type": "integer",
-            "x-example": 0
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "$ref": "#/definitions/Pet"
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Invalid ID supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "404": {
             "description": "Pet not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "x-404:记录不存在": {
             "description": "",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {
-                "code": {
-                  "type": "integer"
-                },
-                "message": {
-                  "type": "string"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
-              },
-              "required": [
-                "code",
-                "message"
-              ]
-            }
+              }
+            },
+            "headers": {}
           },
           "x-400:参数不正确": {
             "description": "",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {
-                "code": {
-                  "type": "integer"
-                },
-                "message": {
-                  "type": "string"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 }
-              },
-              "required": [
-                "code",
-                "message"
-              ]
-            }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       },
       "post": {
         "summary": "Updates a pet in the store with form data",
@@ -528,68 +612,83 @@
             "in": "path",
             "description": "ID of pet that needs to be updated",
             "required": true,
-            "format": "int64",
-            "type": "integer",
-            "x-example": 0
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "name",
-            "in": "formData",
-            "type": "string",
-            "description": "Updated name of the pet"
-          },
-          {
-            "name": "status",
-            "in": "formData",
-            "type": "string",
-            "description": "Updated status of the pet"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
-        "responses": {
-          "405": {
-            "description": "Invalid input",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Updated name of the pet",
+                    "type": "string",
+                    "example": ""
+                  },
+                  "status": {
+                    "description": "Updated status of the pet",
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "405": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       },
       "delete": {
         "summary": "Deletes a pet",
@@ -605,69 +704,84 @@
             "in": "path",
             "description": "Pet id to delete",
             "required": true,
-            "format": "int64",
-            "type": "integer",
-            "x-example": 0
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           },
           {
             "name": "api_key",
             "in": "header",
             "description": "",
             "required": false,
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "400": {
             "description": "Invalid ID supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "404": {
             "description": "Pet not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/store/inventory": {
@@ -685,48 +799,55 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/store/order": {
@@ -744,61 +865,71 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/Order"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "$ref": "#/definitions/Order"
-            }
-          },
-          "400": {
-            "description": "Invalid Order",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid Order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       }
     },
     "/store/order/{orderId}": {
@@ -816,70 +947,87 @@
             "in": "path",
             "description": "ID of pet that needs to be fetched",
             "required": true,
-            "format": "int64",
-            "minimum": 1,
-            "maximum": 10,
-            "type": "integer",
-            "x-example": 0
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1,
+              "maximum": 10
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "$ref": "#/definitions/Order"
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Invalid ID supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "404": {
             "description": "Order not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       },
       "delete": {
         "summary": "Delete purchase order by ID",
@@ -895,62 +1043,75 @@
             "in": "path",
             "description": "ID of the order that needs to be deleted",
             "required": true,
-            "format": "int64",
-            "minimum": 1,
-            "type": "integer",
-            "x-example": 0
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "400": {
             "description": "Invalid ID supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "404": {
             "description": "Order not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/user/createWithList": {
@@ -968,54 +1129,60 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/UserArray"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserArray"
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       }
     },
     "/user/{username}": {
@@ -1033,67 +1200,84 @@
             "in": "path",
             "description": "The name that needs to be fetched. Use user1 for testing. ",
             "required": true,
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "headers": {}
           },
           "400": {
             "description": "Invalid username supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "404": {
             "description": "User not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       },
       "put": {
         "summary": "Updated user",
@@ -1109,70 +1293,82 @@
             "in": "path",
             "description": "name that need to be updated",
             "required": true,
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/User"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
-        "responses": {
-          "400": {
-            "description": "Invalid user supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
-          },
-          "404": {
-            "description": "User not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "400": {
+            "description": "Invalid user supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       },
       "delete": {
         "summary": "Delete user",
@@ -1188,60 +1384,73 @@
             "in": "path",
             "description": "The name that needs to be deleted",
             "required": true,
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "400": {
             "description": "Invalid username supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           },
           "404": {
             "description": "User not found",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/user/login": {
@@ -1259,76 +1468,95 @@
             "in": "query",
             "description": "The user name for login",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "password",
             "in": "query",
             "description": "The password for login in clear text",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
             "headers": {
               "X-Expires-After": {
                 "description": "date in UTC when token expires",
-                "type": "string",
-                "format": "date-time"
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
               },
               "X-Rate-Limit": {
                 "description": "calls per hour allowed by the user",
-                "type": "integer",
-                "format": "int32"
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
               }
-            },
-            "schema": {
-              "type": "string"
             }
           },
           "400": {
             "description": "Invalid username/password supplied",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/user/logout": {
@@ -1346,44 +1574,51 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
           }
         },
-        "security": [],
-        "produces": [
-          "application/json"
-        ]
+        "security": []
       }
     },
     "/user/createWithArray": {
@@ -1401,54 +1636,60 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/UserArray"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserArray"
+              }
             }
           }
         },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
       }
     },
     "/user": {
@@ -1466,309 +1707,315 @@
             "in": "header",
             "description": "Request Unique Identifier",
             "required": true,
-            "format": "uuid",
-            "type": "string",
-            "x-example": ""
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "X-Language",
             "in": "header",
             "description": "",
-            "enum": [
-              "zh",
-              "en"
-            ],
-            "type": "string",
-            "x-example": "zh"
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
           },
           {
             "name": "X-Project-Uuid",
             "in": "header",
             "description": "Project Number",
-            "default": "{{X-Project-Uuid}}",
-            "type": "string",
-            "x-example": "{{X-Project-Uuid}}"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "example": "{{X-Project-Uuid}}",
             "schema": {
-              "$ref": "#/definitions/User"
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "successful operation",
-            "headers": {},
-            "schema": {
-              "type": "object",
-              "properties": {}
-            }
-          }
-        },
-        "security": [],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ]
-      }
-    }
-  },
-  "security": [],
-  "x-ext-example": "这里是示例 OAS 扩展",
-  "swagger": "2.0",
-  "definitions": {
-    "ApiResponse": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "type": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "Order": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "petId": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "quantity": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "shipDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "status": {
-          "type": "string",
-          "description": "Order Status",
-          "enum": [
-            "placed",
-            "approved",
-            "delivered"
-          ]
-        },
-        "complete": {
-          "type": "boolean"
-        }
-      },
-      "xml": {
-        "name": "Order"
-      }
-    },
-    "User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "username": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "userStatus": {
-          "type": "integer",
-          "format": "int32",
-          "description": "User Status"
-        }
-      },
-      "xml": {
-        "name": "User"
-      }
-    },
-    "Pet": {
-      "type": "object",
-      "required": [
-        "name",
-        "photoUrls"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "category": {
-          "$ref": "#/definitions/Category"
-        },
-        "name": {
-          "type": "string",
-          "examples": [
-            "doggie"
-          ]
-        },
-        "photoUrls": {
-          "type": "array",
-          "xml": {
-            "wrapped": true
-          },
-          "items": {
-            "type": "string",
-            "xml": {
-              "name": "photoUrl"
-            }
-          }
-        },
-        "tags": {
-          "type": "array",
-          "xml": {
-            "wrapped": true
-          },
-          "items": {
-            "$ref": "#/definitions/Tag"
-          }
-        },
-        "status": {
-          "type": "string",
-          "description": "pet status in the store",
-          "enum": [
-            "available",
-            "pending",
-            "sold"
-          ]
-        }
-      },
-      "xml": {
-        "name": "Pet"
-      }
-    },
-    "Category": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Category"
-      }
-    },
-    "Tag": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Tag"
-      }
-    },
-    "UserArray": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/User"
-      }
-    },
-    "有 空格的": {
-      "type": "object",
-      "properties": {}
-    },
-    "公共结构": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "description": "非0代表异常"
-        },
-        "message": {
-          "type": "string",
-          "description": "消息提示"
-        }
-      },
-      "required": [
-        "code",
-        "message"
-      ]
-    },
-    "AllOf": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Tag"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "description": "ID 编号"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
             },
-            "name": {
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "petId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "shipDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "description": "Order Status",
+            "enum": [
+              "placed",
+              "approved",
+              "delivered"
+            ]
+          },
+          "complete": {
+            "type": "boolean"
+          }
+        },
+        "xml": {
+          "name": "Order"
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "userStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "User Status"
+          }
+        },
+        "xml": {
+          "name": "User"
+        }
+      },
+      "Pet": {
+        "type": "object",
+        "required": [
+          "name",
+          "photoUrls"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "name": {
+            "type": "string",
+            "examples": [
+              "doggie"
+            ]
+          },
+          "photoUrls": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
               "type": "string",
-              "description": "名称"
+              "xml": {
+                "name": "photoUrl"
+              }
             }
           },
-          "required": [
-            "id",
-            "name"
-          ]
+          "tags": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "pet status in the store",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        },
+        "xml": {
+          "name": "Pet"
         }
-      ]
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Category"
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Tag"
+        }
+      },
+      "UserArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/User"
+        }
+      },
+      "有 空格的": {
+        "type": "object",
+        "properties": {}
+      },
+      "公共结构": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "非0代表异常"
+          },
+          "message": {
+            "type": "string",
+            "description": "消息提示"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "AllOf": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Tag"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "ID 编号"
+              },
+              "name": {
+                "type": "string",
+                "description": "名称"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ]
+          }
+        ]
+      },
+      "String": {
+        "type": "string"
+      },
+      "RefString": {
+        "$ref": "#/components/schemas/String"
+      },
+      "RefObject": {
+        "$ref": "#/components/schemas/%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84"
+      }
     },
-    "String": {
-      "type": "string"
-    },
-    "RefString": {
-      "$ref": "#/definitions/String"
-    },
-    "RefObject": {
-      "$ref": "#/definitions/%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84"
+    "securitySchemes": {
+      "SessionAuth": {
+        "type": "apiKey",
+        "name": "session_token",
+        "in": "header"
+      },
+      "PATAuth": {
+        "type": "apiKey",
+        "name": "pat_token",
+        "in": "header"
+      },
+      "LegacySessionAuth": {
+        "type": "apiKey",
+        "name": "legacy_session_token",
+        "in": "header"
+      }
     }
   },
-  "securityDefinitions": {
-    "SessionAuth": {
-      "type": "apiKey",
-      "name": "session_token",
-      "in": "header"
-    },
-    "PATAuth": {
-      "type": "apiKey",
-      "name": "pat_token",
-      "in": "header"
-    },
-    "LegacySessionAuth": {
-      "type": "apiKey",
-      "name": "legacy_session_token",
-      "in": "header"
-    }
-  },
-  "x-components": {}
+  "servers": [],
+  "security": []
 }

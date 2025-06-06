@@ -1114,6 +1114,77 @@
         "security": []
       }
     },
+    "/user/createWithArray": {
+      "post": {
+        "summary": "Creates list of users with given input array",
+        "deprecated": false,
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserArray"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
     "/user/createWithList": {
       "post": {
         "summary": "Creates list of users with given input array",
@@ -1604,77 +1675,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": []
-      }
-    },
-    "/user/createWithArray": {
-      "post": {
-        "summary": "Creates list of users with given input array",
-        "deprecated": false,
-        "description": "",
-        "operationId": "createUsersWithArrayInput",
-        "tags": [
-          "user"
-        ],
-        "parameters": [
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "description": "Request Unique Identifier",
-            "required": true,
-            "example": "",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "X-Language",
-            "in": "header",
-            "description": "",
-            "example": "zh",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "zh",
-                "en"
-              ]
-            }
-          },
-          {
-            "name": "X-Project-Uuid",
-            "in": "header",
-            "description": "Project Number",
-            "example": "{{X-Project-Uuid}}",
-            "schema": {
-              "type": "string",
-              "default": "{{X-Project-Uuid}}"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserArray"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "successful operation",

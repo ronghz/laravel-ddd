@@ -1114,12 +1114,12 @@
         "security": []
       }
     },
-    "/user/createWithArray": {
+    "/user": {
       "post": {
-        "summary": "Creates list of users with given input array",
+        "summary": "Create user",
         "deprecated": false,
-        "description": "",
-        "operationId": "createUsersWithArrayInput",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createUser",
         "tags": [
           "user"
         ],
@@ -1163,7 +1163,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserArray"
+                "$ref": "#/components/schemas/User"
               }
             }
           }
@@ -1692,12 +1692,12 @@
         "security": []
       }
     },
-    "/user": {
+    "/user/createWithArray": {
       "post": {
-        "summary": "Create user",
+        "summary": "Creates list of users with given input array",
         "deprecated": false,
-        "description": "This can only be done by the logged in user.",
-        "operationId": "createUser",
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
         "tags": [
           "user"
         ],
@@ -1741,7 +1741,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserArray"
               }
             }
           }

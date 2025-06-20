@@ -57,14 +57,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -146,14 +140,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -221,14 +209,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -313,18 +295,9 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  {
-                    "type": "object",
-                    "properties": {}
-                  },
-                  {
-                    "type": "object",
-                    "properties": {}
-                  },
-                  {
-                    "type": "object",
-                    "properties": {}
-                  }
+                  "available",
+                  "pending",
+                  "sold"
                 ],
                 "default": "available"
               }
@@ -349,14 +322,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -443,14 +410,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -536,14 +497,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -609,14 +564,8 @@
                     }
                   },
                   "required": [
-                    {
-                      "type": "object",
-                      "properties": {}
-                    },
-                    {
-                      "type": "object",
-                      "properties": {}
-                    }
+                    "code",
+                    "message"
                   ]
                 }
               }
@@ -638,14 +587,8 @@
                     }
                   },
                   "required": [
-                    {
-                      "type": "object",
-                      "properties": {}
-                    },
-                    {
-                      "type": "object",
-                      "properties": {}
-                    }
+                    "code",
+                    "message"
                   ]
                 }
               }
@@ -694,14 +637,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -802,14 +739,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -882,14 +813,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -954,14 +879,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1055,14 +974,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1156,14 +1069,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1236,14 +1143,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1323,14 +1224,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1422,14 +1317,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1519,14 +1408,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1617,14 +1500,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1711,14 +1588,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1779,14 +1650,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1856,14 +1721,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },
@@ -1945,18 +1804,9 @@
             "type": "string",
             "description": "Order Status",
             "enum": [
-              {
-                "type": "object",
-                "properties": {}
-              },
-              {
-                "type": "object",
-                "properties": {}
-              },
-              {
-                "type": "object",
-                "properties": {}
-              }
+              "placed",
+              "approved",
+              "delivered"
             ]
           },
           "complete": {
@@ -2005,14 +1855,8 @@
       "Pet": {
         "type": "object",
         "required": [
-          {
-            "type": "object",
-            "properties": {}
-          },
-          {
-            "type": "object",
-            "properties": {}
-          }
+          "name",
+          "photoUrls"
         ],
         "properties": {
           "id": {
@@ -2025,10 +1869,7 @@
           "name": {
             "type": "string",
             "examples": [
-              {
-                "type": "object",
-                "properties": {}
-              }
+              "doggie"
             ]
           },
           "photoUrls": {
@@ -2056,18 +1897,9 @@
             "type": "string",
             "description": "pet status in the store",
             "enum": [
-              {
-                "type": "object",
-                "properties": {}
-              },
-              {
-                "type": "object",
-                "properties": {}
-              },
-              {
-                "type": "object",
-                "properties": {}
-              }
+              "available",
+              "pending",
+              "sold"
             ]
           }
         },
@@ -2128,14 +1960,8 @@
           }
         },
         "required": [
-          {
-            "type": "object",
-            "properties": {}
-          },
-          {
-            "type": "object",
-            "properties": {}
-          }
+          "code",
+          "message"
         ]
       },
       "AllOf": {
@@ -2156,14 +1982,8 @@
               }
             },
             "required": [
-              {
-                "type": "object",
-                "properties": {}
-              },
-              {
-                "type": "object",
-                "properties": {}
-              }
+              "id",
+              "name"
             ]
           }
         ]

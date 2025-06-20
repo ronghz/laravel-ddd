@@ -35,10 +35,8 @@ paths:
           schema:
             type: string
             enum:
-              - type: object
-                properties: {}
-              - type: object
-                properties: {}
+              - zh
+              - en
         - name: X-Project-Uuid
           in: header
           description: Project Number
@@ -91,8 +89,7 @@ paths:
                   code:
                     type: integer
                 required:
-                  - type: object
-                    properties: {}
+                  - code
           headers: {}
       security: []
   /version/test1:
@@ -117,10 +114,8 @@ paths:
           schema:
             type: string
             enum:
-              - type: object
-                properties: {}
-              - type: object
-                properties: {}
+              - zh
+              - en
         - name: X-Project-Uuid
           in: header
           description: Project Number
@@ -142,18 +137,12 @@ components:
   schemas:
     Pet:
       required:
-        - type: object
-          properties: {}
-        - type: object
-          properties: {}
-        - type: object
-          properties: {}
-        - type: object
-          properties: {}
-        - type: object
-          properties: {}
-        - type: object
-          properties: {}
+        - name
+        - photoUrls
+        - id
+        - category
+        - tags
+        - status
       type: object
       properties:
         id:
@@ -168,8 +157,7 @@ components:
           type: string
           description: 名称
           examples:
-            - type: object
-              properties: {}
+            - doggie
         photoUrls:
           type: array
           items:
@@ -184,12 +172,9 @@ components:
           type: string
           description: 宠物销售状态
           enum:
-            - type: object
-              properties: {}
-            - type: object
-              properties: {}
-            - type: object
-              properties: {}
+            - available
+            - pending
+            - sold
     Tag:
       type: object
       properties:

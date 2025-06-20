@@ -57,8 +57,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -140,8 +146,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -209,8 +221,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -295,9 +313,18 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "available",
-                  "pending",
-                  "sold"
+                  {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  {
+                    "type": "object",
+                    "properties": {}
+                  }
                 ],
                 "default": "available"
               }
@@ -322,8 +349,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -410,8 +443,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -497,8 +536,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -564,8 +609,14 @@
                     }
                   },
                   "required": [
-                    "code",
-                    "message"
+                    {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    {
+                      "type": "object",
+                      "properties": {}
+                    }
                   ]
                 }
               }
@@ -587,8 +638,14 @@
                     }
                   },
                   "required": [
-                    "code",
-                    "message"
+                    {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    {
+                      "type": "object",
+                      "properties": {}
+                    }
                   ]
                 }
               }
@@ -637,8 +694,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -739,8 +802,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -813,8 +882,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -879,8 +954,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -974,8 +1055,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1069,8 +1156,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1143,8 +1236,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1224,8 +1323,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1317,8 +1422,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1408,8 +1519,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1500,8 +1617,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1588,8 +1711,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1650,8 +1779,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1721,8 +1856,14 @@
             "schema": {
               "type": "string",
               "enum": [
-                "zh",
-                "en"
+                {
+                  "type": "object",
+                  "properties": {}
+                },
+                {
+                  "type": "object",
+                  "properties": {}
+                }
               ]
             }
           },
@@ -1804,9 +1945,18 @@
             "type": "string",
             "description": "Order Status",
             "enum": [
-              "placed",
-              "approved",
-              "delivered"
+              {
+                "type": "object",
+                "properties": {}
+              },
+              {
+                "type": "object",
+                "properties": {}
+              },
+              {
+                "type": "object",
+                "properties": {}
+              }
             ]
           },
           "complete": {
@@ -1855,8 +2005,14 @@
       "Pet": {
         "type": "object",
         "required": [
-          "name",
-          "photoUrls"
+          {
+            "type": "object",
+            "properties": {}
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
         ],
         "properties": {
           "id": {
@@ -1869,7 +2025,10 @@
           "name": {
             "type": "string",
             "examples": [
-              "doggie"
+              {
+                "type": "object",
+                "properties": {}
+              }
             ]
           },
           "photoUrls": {
@@ -1897,29 +2056,23 @@
             "type": "string",
             "description": "pet status in the store",
             "enum": [
-              "available",
-              "pending",
-              "sold"
+              {
+                "type": "object",
+                "properties": {}
+              },
+              {
+                "type": "object",
+                "properties": {}
+              },
+              {
+                "type": "object",
+                "properties": {}
+              }
             ]
           }
         },
         "xml": {
           "name": "Pet"
-        }
-      },
-      "Category": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "xml": {
-          "name": "Category"
         }
       },
       "Tag": {
@@ -1935,6 +2088,21 @@
         },
         "xml": {
           "name": "Tag"
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Category"
         }
       },
       "UserArray": {
@@ -1960,8 +2128,14 @@
           }
         },
         "required": [
-          "code",
-          "message"
+          {
+            "type": "object",
+            "properties": {}
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
         ]
       },
       "AllOf": {
@@ -1982,8 +2156,14 @@
               }
             },
             "required": [
-              "id",
-              "name"
+              {
+                "type": "object",
+                "properties": {}
+              },
+              {
+                "type": "object",
+                "properties": {}
+              }
             ]
           }
         ]

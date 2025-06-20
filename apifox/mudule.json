@@ -33,14 +33,8 @@
             "schema": {
               "type": "string",
               "enum": [
-                {
-                  "type": "object",
-                  "properties": {}
-                },
-                {
-                  "type": "object",
-                  "properties": {}
-                }
+                "zh",
+                "en"
               ]
             }
           },

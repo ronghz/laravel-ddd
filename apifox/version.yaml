@@ -35,8 +35,10 @@ paths:
           schema:
             type: string
             enum:
-              - zh
-              - en
+              - type: object
+                properties: {}
+              - type: object
+                properties: {}
         - name: X-Project-Uuid
           in: header
           description: Project Number
@@ -89,7 +91,8 @@ paths:
                   code:
                     type: integer
                 required:
-                  - code
+                  - type: object
+                    properties: {}
           headers: {}
       security: []
   /version/test1:
@@ -114,8 +117,10 @@ paths:
           schema:
             type: string
             enum:
-              - zh
-              - en
+              - type: object
+                properties: {}
+              - type: object
+                properties: {}
         - name: X-Project-Uuid
           in: header
           description: Project Number
@@ -137,12 +142,18 @@ components:
   schemas:
     Pet:
       required:
-        - name
-        - photoUrls
-        - id
-        - category
-        - tags
-        - status
+        - type: object
+          properties: {}
+        - type: object
+          properties: {}
+        - type: object
+          properties: {}
+        - type: object
+          properties: {}
+        - type: object
+          properties: {}
+        - type: object
+          properties: {}
       type: object
       properties:
         id:
@@ -157,7 +168,8 @@ components:
           type: string
           description: 名称
           examples:
-            - doggie
+            - type: object
+              properties: {}
         photoUrls:
           type: array
           items:
@@ -172,9 +184,12 @@ components:
           type: string
           description: 宠物销售状态
           enum:
-            - available
-            - pending
-            - sold
+            - type: object
+              properties: {}
+            - type: object
+              properties: {}
+            - type: object
+              properties: {}
     Tag:
       type: object
       properties:

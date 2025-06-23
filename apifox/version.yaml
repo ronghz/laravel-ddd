@@ -156,8 +156,7 @@ components:
         name:
           type: string
           description: 名称
-          examples:
-            - doggie
+          example: doggie
         photoUrls:
           type: array
           items:

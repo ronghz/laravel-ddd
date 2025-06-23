@@ -1868,9 +1868,7 @@
           },
           "name": {
             "type": "string",
-            "examples": [
-              "doggie"
-            ]
+            "example": "doggie"
           },
           "photoUrls": {
             "type": "array",

@@ -1,25 +1,18 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "git 连接",
-    "description": "这里是 OAS 描述... ddddd",
-    "version": "1.0.0",
-    "x-ext-example": "这里是示例 OAS info 的扩展"
+    "title": "mudule",
+    "description": "",
+    "version": "1.0.0"
   },
-  "tags": [
-    {
-      "name": "branch1"
-    }
-  ],
+  "tags": [],
   "paths": {
-    "/branch/test1": {
+    "/module/test1": {
       "get": {
-        "summary": "子分支接口",
+        "summary": "测试导出",
         "deprecated": false,
         "description": "",
-        "tags": [
-          "branch1"
-        ],
+        "tags": [],
         "parameters": [
           {
             "name": "X-Request-Id",
@@ -79,6 +72,5 @@
     "securitySchemes": {}
   },
   "servers": [],
-  "security": [],
-  "x-ext-example": "这里是示例 OAS 扩展"
+  "security": []
 }

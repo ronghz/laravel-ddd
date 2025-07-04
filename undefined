@@ -1,205 +1,84 @@
-openapi: 3.0.1
-info:
-  title: git 连接-导出版本
-  description: ''
-  version: 1.0.0
-tags:
-  - name: 宠物
-paths:
-  /pet/findByStatus:
-    get:
-      summary: 根据状态查找宠物列表
-      deprecated: false
-      description: ''
-      tags:
-        - 宠物
-      parameters:
-        - name: status
-          in: query
-          description: Status values that need to be considered for filter
-          required: true
-          schema:
-            type: string
-        - name: X-Request-Id
-          in: header
-          description: Request Unique Identifier
-          required: true
-          example: ''
-          schema:
-            type: string
-            format: uuid
-        - name: X-Language
-          in: header
-          description: ''
-          example: zh
-          schema:
-            type: string
-            enum:
-              - zh
-              - en
-        - name: X-Project-Uuid
-          in: header
-          description: Project Number
-          example: '{{X-Project-Uuid}}'
-          schema:
-            type: string
-            default: '{{X-Project-Uuid}}'
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-              example:
-                code: 0
-                data:
-                  - name: Hello Kity
-                    photoUrls:
-                      - http://dummyimage.com/400x400
-                    id: 3
-                    category:
-                      id: 71
-                      name: Cat
-                    tags:
-                      - id: 22
-                        name: Cat
-                    status: sold
-                  - name: White Dog
-                    photoUrls:
-                      - http://dummyimage.com/400x400
-                    id: 3
-                    category:
-                      id: 71
-                      name: Dog
-                    tags:
-                      - id: 22
-                        name: Dog
-                    status: sold
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                required:
-                  - code
-          headers: {}
-      security: []
-  /version/test1:
-    get:
-      summary: Version
-      deprecated: false
-      description: ''
-      tags: []
-      parameters:
-        - name: X-Request-Id
-          in: header
-          description: Request Unique Identifier
-          required: true
-          example: ''
-          schema:
-            type: string
-            format: uuid
-        - name: X-Language
-          in: header
-          description: ''
-          example: zh
-          schema:
-            type: string
-            enum:
-              - zh
-              - en
-        - name: X-Project-Uuid
-          in: header
-          description: Project Number
-          example: '{{X-Project-Uuid}}'
-          schema:
-            type: string
-            default: '{{X-Project-Uuid}}'
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-          headers: {}
-      security: []
-components:
-  schemas:
-    Pet:
-      required:
-        - name
-        - photoUrls
-        - id
-        - category
-        - tags
-        - status
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          minimum: 1
-          description: 宠物ID编号
-        category:
-          $ref: '#/components/schemas/Category'
-          description: 分组
-        name:
-          type: string
-          description: 名称
-          example: doggie
-        photoUrls:
-          type: array
-          items:
-            type: string
-          description: 照片URL
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-          description: 标签
-        status:
-          type: string
-          description: 宠物销售状态
-          enum:
-            - available
-            - pending
-            - sold
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          minimum: 1
-          description: 分组ID编号
-        name:
-          type: string
-          description: 分组名称
-      xml:
-        name: Category
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          minimum: 1
-          description: 标签ID编号
-        name:
-          type: string
-          description: 标签名称
-      xml:
-        name: Tag
-  securitySchemes: {}
-servers: []
-security: []
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "git 连接",
+    "description": "这里是 OAS 描述... ddddd",
+    "version": "1.0.0",
+    "x-ext-example": "这里是示例 OAS info 的扩展"
+  },
+  "tags": [
+    {
+      "name": "branch1"
+    }
+  ],
+  "paths": {
+    "/branch/test1": {
+      "get": {
+        "summary": "子分支接口",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "branch1"
+        ],
+        "parameters": [
+          {
+            "name": "X-Request-Id",
+            "in": "header",
+            "description": "Request Unique Identifier",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "",
+            "example": "zh",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "zh",
+                "en"
+              ]
+            }
+          },
+          {
+            "name": "X-Project-Uuid",
+            "in": "header",
+            "description": "Project Number",
+            "example": "{{X-Project-Uuid}}",
+            "schema": {
+              "type": "string",
+              "default": "{{X-Project-Uuid}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": [],
+  "x-ext-example": "这里是示例 OAS 扩展"
+}

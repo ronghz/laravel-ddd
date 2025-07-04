@@ -156,8 +156,7 @@ components:
         name:
           type: string
           description: 名称
-          examples:
-            - doggie
+          example: doggie
         photoUrls:
           type: array
           items:
@@ -175,19 +174,6 @@ components:
             - available
             - pending
             - sold
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          minimum: 1
-          description: 标签ID编号
-        name:
-          type: string
-          description: 标签名称
-      xml:
-        name: Tag
     Category:
       type: object
       properties:
@@ -201,6 +187,19 @@ components:
           description: 分组名称
       xml:
         name: Category
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 1
+          description: 标签ID编号
+        name:
+          type: string
+          description: 标签名称
+      xml:
+        name: Tag
   securitySchemes: {}
 servers: []
 security: []

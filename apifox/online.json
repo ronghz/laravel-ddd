@@ -1068,9 +1068,7 @@
           },
           "name": {
             "type": "string",
-            "examples": [
-              "doggie"
-            ]
+            "example": "doggie"
           },
           "photoUrls": {
             "type": "array",
@@ -1164,9 +1162,7 @@
           "kilogram",
           "gram"
         ],
-        "examples": [
-          "tonne"
-        ]
+        "example": "tonne"
       },
       "Category1": {
         "x-swagger-router-model": "io.swagger.petstore.model.Category",
@@ -1178,15 +1174,11 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              1
-            ]
+            "example": 1
           },
           "name": {
             "type": "string",
-            "examples": [
-              "Dogs"
-            ]
+            "example": "Dogs"
           }
         }
       },
@@ -1202,9 +1194,7 @@
           "mile",
           "nautical_mile"
         ],
-        "examples": [
-          "kilometer"
-        ]
+        "example": "kilometer"
       },
       "Pet2": {
         "x-swagger-router-model": "io.swagger.petstore.model.Pet",
@@ -1223,15 +1213,11 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              10
-            ]
+            "example": 10
           },
           "name": {
             "type": "string",
-            "examples": [
-              "doggie"
-            ]
+            "example": "doggie"
           },
           "tags": {
             "type": "array",
@@ -1332,9 +1318,7 @@
           "road_freight",
           "van"
         ],
-        "examples": [
-          "air_freight"
-        ]
+        "example": "air_freight"
       },
       "Order": {
         "x-swagger-router-model": "io.swagger.petstore.model.Order",
@@ -1346,23 +1330,17 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              10
-            ]
+            "example": 10
           },
           "petId": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              198772
-            ]
+            "example": 198772
           },
           "quantity": {
             "type": "integer",
             "format": "int32",
-            "examples": [
-              7
-            ]
+            "example": 7
           },
           "shipDate": {
             "type": "string",
@@ -1379,9 +1357,7 @@
               "approved",
               "delivered"
             ],
-            "examples": [
-              "approved"
-            ]
+            "example": "approved"
           }
         }
       },
@@ -1407,9 +1383,7 @@
           "TIM",
           "SQUAKE"
         ],
-        "examples": [
-          "GLEC"
-        ]
+        "example": "GLEC"
       },
       "User": {
         "x-swagger-router-model": "io.swagger.petstore.model.User",
@@ -1421,65 +1395,60 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              10
-            ]
+            "example": 10
           },
           "username": {
             "type": "string",
-            "examples": [
-              "theUser"
-            ]
+            "example": "theUser"
           },
           "firstName": {
             "type": "string",
-            "examples": [
-              "John"
-            ]
+            "example": "John"
           },
           "lastName": {
             "type": "string",
-            "examples": [
-              "James"
-            ]
+            "example": "James"
           },
           "email": {
             "type": "string",
-            "examples": [
-              "john@email.com"
-            ]
+            "example": "john@email.com"
           },
           "password": {
             "type": "string",
-            "examples": [
-              "12345"
-            ]
+            "example": "12345"
           },
           "phone": {
             "type": "string",
-            "examples": [
-              "12345"
-            ]
+            "example": "12345"
           },
           "userStatus": {
             "type": "integer",
             "description": "User Status",
             "format": "int32",
-            "examples": [
-              1
-            ]
+            "example": 1
           }
         }
       },
       "SQUAKE-Request-Id": {
-        "type": "string"
+        "id": "2620f69f89024",
+        "key": "SQUAKE-Request-Id",
+        "name": "SQUAKE-Request-Id",
+        "style": "simple",
+        "description": "Unique identifier linked to this API request. If you need to contact us regarding a specific request, providing the request identifier helps the resolution process.",
+        "schema": {
+          "$ref": "#/components/schemas/436e3e894a8d1"
+        },
+        "explicitProperties": [
+          "name",
+          "in",
+          "schema",
+          "description"
+        ]
       },
       "436e3e894a8d1": {
         "type": "string",
         "pattern": "req_[a-zA-Z0-9-]+",
-        "examples": [
-          "req_70394c00-728e-4d70-90bc-2b589c9ebdf8"
-        ]
+        "example": "req_70394c00-728e-4d70-90bc-2b589c9ebdf8"
       },
       "Calculation-Base-Item": {
         "type": "object",
@@ -1538,9 +1507,7 @@
                 "invalid_methodology",
                 "invalid_type"
               ],
-              "examples": [
-                "field_validation_error"
-              ]
+              "example": "field_validation_error"
             }
           }
         }
@@ -1563,8 +1530,8 @@
         "discriminator": {
           "propertyName": "methodology",
           "mapping": {
-            "icao": "#/components/schemas/ICAOFlight",
-            "defra": "#/components/schemas/DefraFlight"
+            "icao": "#/definitions/175788052",
+            "defra": "#/definitions/175788053"
           }
         },
         "properties": {
@@ -1572,7 +1539,8 @@
             "type": "string"
           },
           "type": {
-            "type": "string"
+            "const": "flight",
+            "example": "flight"
           },
           "booking_class": {
             "type": "string",
@@ -1583,18 +1551,14 @@
               "economy",
               "business"
             ],
-            "examples": [
-              "economy"
-            ]
+            "example": "economy"
           },
           "number_of_travelers": {
             "type": "integer",
             "format": "int32",
             "minimum": 1,
             "default": 1,
-            "examples": [
-              2
-            ]
+            "example": 2
           },
           "aircraft_size": {
             "type": "string",
@@ -1606,11 +1570,211 @@
               "under_250_seats",
               "over_250_seats"
             ],
-            "examples": [
-              "under_100_seats"
-            ]
+            "example": "under_100_seats"
           }
         }
+      },
+      "Train": {
+        "type": "object",
+        "title": "Train",
+        "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
+        "required": [
+          "type",
+          "methodology",
+          "number_of_travelers"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DefraTrain"
+          },
+          {
+            "$ref": "#/components/schemas/SquakeTrain"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "methodology",
+          "mapping": {
+            "icao": "#/definitions/175788054",
+            "defra": "#/definitions/175788055"
+          }
+        },
+        "properties": {
+          "methodology": {
+            "type": "string"
+          },
+          "type": {
+            "const": "train",
+            "example": "train"
+          },
+          "train_type": {
+            "type": "string",
+            "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
+            "enum": [
+              "average",
+              "high_speed",
+              "international",
+              "light",
+              "local_express",
+              "mainline",
+              "national",
+              "regional",
+              "tram",
+              "underground"
+            ],
+            "example": "average"
+          },
+          "fuel_type": {
+            "type": "string",
+            "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
+            "enum": [
+              "diesel",
+              "electricity",
+              "hydrogen",
+              "hybrid",
+              "average"
+            ],
+            "example": "diesel"
+          },
+          "number_of_travelers": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 1,
+            "example": 2
+          },
+          "operator_name": {
+            "type": "string",
+            "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
+            "example": "sncf"
+          },
+          "seat_type": {
+            "type": "string",
+            "description": "Used for `SQUAKE`.",
+            "default": "first_class",
+            "enum": [
+              "first_class",
+              "second_class"
+            ],
+            "example": "second_class"
+          },
+          "state": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "enum": [
+              "Ile-de-France",
+              "Corsica"
+            ],
+            "example": "Ile-de-France"
+          },
+          "city_type": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "enum": [
+              "population_under_250000",
+              "population_above_250000"
+            ],
+            "example": "population_above_250000"
+          },
+          "country": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "enum": [
+              "AT",
+              "BE",
+              "CH",
+              "DE",
+              "DK",
+              "ES",
+              "FI",
+              "GB",
+              "GR",
+              "IE",
+              "IT",
+              "LU",
+              "NL",
+              "NO",
+              "PT",
+              "SE"
+            ],
+            "example": "Ile-de-France"
+          },
+          "year": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "example": "2022"
+          }
+        }
+      },
+      "ICAOFlight": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Calculation-Base-Item"
+          },
+          {
+            "type": "object",
+            "title": "ICAO Flight",
+            "required": [
+              "type",
+              "methodology"
+            ],
+            "properties": {
+              "type": {
+                "const": "flight",
+                "example": "flight"
+              },
+              "methodology": {
+                "type": "string",
+                "enum": [
+                  "ICAO"
+                ]
+              },
+              "booking_class": {
+                "type": "string",
+                "description": "If you don't pass a `booking_class` then `fare_class` and `airline` are required. SQUAKE will then automatically resolve the correct `booking_class`; used for `DEFRA`, `CO2-EMISSIEFACTOREN-NL`, `TIM`, `GATE4` and `ICAO`. For `CO2-EMISSIEFACTOREN-NL` this is optional with `average` as the default value. For `DEFRA` `average` is the default, while `economy` is the default for `TIM`, `ICAO` and `GATE4`.",
+                "enum": [
+                  "first",
+                  "premium_economy",
+                  "economy",
+                  "business"
+                ],
+                "example": "economy"
+              },
+              "number_of_travelers": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1,
+                "default": 1,
+                "example": 2
+              },
+              "aircraft_size": {
+                "type": "string",
+                "description": "An estimation of the aircraft's size based on the number of seats; used for `ADEME` and `BASE-EMPREINTE`.",
+                "enum": [
+                  "under_50_seats",
+                  "under_100_seats",
+                  "under_180_seats",
+                  "under_250_seats",
+                  "over_250_seats"
+                ],
+                "example": "under_100_seats"
+              },
+              "fare_class": {
+                "type": "string",
+                "description": "The combination of `fare_class` and `airline` is mutually exclusive with `booking_class`. This is a single letter e.g. `Y`, `J`, etc.",
+                "example": "B"
+              },
+              "airline": {
+                "type": "string",
+                "description": "The IATA Designator of an airline, e.g., 2-digit format like `LH` or 3-digit format like `220`. Airline names and ICAO codes are also supported, SQUAKE will then automatically resolve it. The combination of `fare_class` and `airline` is mutually exclusive with `booking_class`.",
+                "example": "`LH` / `220` or `Lufthansa` or `DLH`, `DL` / `006` or `Delta Airlines` or `DAL`"
+              },
+              "flight_number": {
+                "type": "string",
+                "description": "Flight numbers should include the airline designator, for example `BA115` is accepted but `115` also works with passed separately `airline`; used for `TIM` and `GATE4`.",
+                "example": "BA115"
+              }
+            }
+          }
+        ]
       },
       "DefraFlight": {
         "allOf": [
@@ -1636,16 +1800,15 @@
                 "description": "Used for `TU-CHALMERS`"
               },
               "type": {
-                "type": "string"
+                "const": "flight",
+                "example": "flight"
               },
               "methodology": {
                 "type": "string",
                 "enum": [
                   "DEFRA"
                 ],
-                "examples": [
-                  "ICAO"
-                ]
+                "example": "ICAO"
               },
               "booking_class": {
                 "type": "string",
@@ -1656,18 +1819,14 @@
                   "economy",
                   "business"
                 ],
-                "examples": [
-                  "economy"
-                ]
+                "example": "economy"
               },
               "number_of_travelers": {
                 "type": "integer",
                 "format": "int32",
                 "minimum": 1,
                 "default": 1,
-                "examples": [
-                  2
-                ]
+                "example": 2
               },
               "plane_type": {
                 "type": "string",
@@ -1677,243 +1836,136 @@
                   "scheduled",
                   "charter"
                 ],
-                "examples": [
-                  "scheduled"
-                ]
+                "example": "scheduled"
               }
             }
           }
         ]
       },
-      "ICAOFlight": {
+      "DefraTrain": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Calculation-Base-Item"
           },
           {
             "type": "object",
-            "title": "ICAO Flight",
+            "title": "DefraTrain",
+            "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
             "required": [
               "type",
-              "methodology"
+              "methodology",
+              "number_of_travelers"
             ],
             "properties": {
               "type": {
-                "type": "string"
+                "const": "train",
+                "example": "train"
               },
               "methodology": {
                 "type": "string",
                 "enum": [
-                  "ICAO"
+                  "DEFRA"
                 ]
               },
-              "booking_class": {
+              "train_type": {
                 "type": "string",
-                "description": "If you don't pass a `booking_class` then `fare_class` and `airline` are required. SQUAKE will then automatically resolve the correct `booking_class`; used for `DEFRA`, `CO2-EMISSIEFACTOREN-NL`, `TIM`, `GATE4` and `ICAO`. For `CO2-EMISSIEFACTOREN-NL` this is optional with `average` as the default value. For `DEFRA` `average` is the default, while `economy` is the default for `TIM`, `ICAO` and `GATE4`.",
+                "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
                 "enum": [
-                  "first",
-                  "premium_economy",
-                  "economy",
-                  "business"
+                  "average",
+                  "high_speed",
+                  "international",
+                  "light",
+                  "local_express",
+                  "mainline",
+                  "national",
+                  "regional",
+                  "tram",
+                  "underground"
                 ],
-                "examples": [
-                  "economy"
-                ]
+                "example": "average"
+              },
+              "fuel_type": {
+                "type": "string",
+                "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
+                "enum": [
+                  "diesel",
+                  "electricity",
+                  "hydrogen",
+                  "hybrid",
+                  "average"
+                ],
+                "example": "diesel"
               },
               "number_of_travelers": {
                 "type": "integer",
-                "format": "int32",
                 "minimum": 1,
                 "default": 1,
-                "examples": [
-                  2
-                ]
+                "example": 2
               },
-              "aircraft_size": {
+              "operator_name": {
                 "type": "string",
-                "description": "An estimation of the aircraft's size based on the number of seats; used for `ADEME` and `BASE-EMPREINTE`.",
+                "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
+                "example": "sncf"
+              },
+              "seat_type": {
+                "type": "string",
+                "description": "Used for `SQUAKE`.",
+                "default": "first_class",
                 "enum": [
-                  "under_50_seats",
-                  "under_100_seats",
-                  "under_180_seats",
-                  "under_250_seats",
-                  "over_250_seats"
+                  "first_class",
+                  "second_class"
                 ],
-                "examples": [
-                  "under_100_seats"
-                ]
+                "example": "second_class"
               },
-              "fare_class": {
+              "state": {
                 "type": "string",
-                "description": "The combination of `fare_class` and `airline` is mutually exclusive with `booking_class`. This is a single letter e.g. `Y`, `J`, etc.",
-                "examples": [
-                  "B"
-                ]
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "Ile-de-France",
+                  "Corsica"
+                ],
+                "example": "Ile-de-France"
               },
-              "airline": {
+              "city_type": {
                 "type": "string",
-                "description": "The IATA Designator of an airline, e.g., 2-digit format like `LH` or 3-digit format like `220`. Airline names and ICAO codes are also supported, SQUAKE will then automatically resolve it. The combination of `fare_class` and `airline` is mutually exclusive with `booking_class`.",
-                "examples": [
-                  "`LH` / `220` or `Lufthansa` or `DLH`, `DL` / `006` or `Delta Airlines` or `DAL`"
-                ]
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "population_under_250000",
+                  "population_above_250000"
+                ],
+                "example": "population_above_250000"
               },
-              "flight_number": {
+              "country": {
                 "type": "string",
-                "description": "Flight numbers should include the airline designator, for example `BA115` is accepted but `115` also works with passed separately `airline`; used for `TIM` and `GATE4`.",
-                "examples": [
-                  "BA115"
-                ]
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "AT",
+                  "BE",
+                  "CH",
+                  "DE",
+                  "DK",
+                  "ES",
+                  "FI",
+                  "GB",
+                  "GR",
+                  "IE",
+                  "IT",
+                  "LU",
+                  "NL",
+                  "NO",
+                  "PT",
+                  "SE"
+                ],
+                "example": "Ile-de-France"
+              },
+              "year": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "example": "2022"
               }
             }
           }
         ]
-      },
-      "Train": {
-        "type": "object",
-        "title": "Train",
-        "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
-        "required": [
-          "type",
-          "methodology",
-          "number_of_travelers"
-        ],
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DefraTrain"
-          },
-          {
-            "$ref": "#/components/schemas/SquakeTrain"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "methodology",
-          "mapping": {
-            "icao": "#/components/schemas/DefraTrain",
-            "defra": "#/components/schemas/SquakeTrain"
-          }
-        },
-        "properties": {
-          "methodology": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "train_type": {
-            "type": "string",
-            "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
-            "enum": [
-              "average",
-              "high_speed",
-              "international",
-              "light",
-              "local_express",
-              "mainline",
-              "national",
-              "regional",
-              "tram",
-              "underground"
-            ],
-            "examples": [
-              "average"
-            ]
-          },
-          "fuel_type": {
-            "type": "string",
-            "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
-            "enum": [
-              "diesel",
-              "electricity",
-              "hydrogen",
-              "hybrid",
-              "average"
-            ],
-            "examples": [
-              "diesel"
-            ]
-          },
-          "number_of_travelers": {
-            "type": "integer",
-            "minimum": 1,
-            "default": 1,
-            "examples": [
-              2
-            ]
-          },
-          "operator_name": {
-            "type": "string",
-            "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
-            "examples": [
-              "sncf"
-            ]
-          },
-          "seat_type": {
-            "type": "string",
-            "description": "Used for `SQUAKE`.",
-            "default": "first_class",
-            "enum": [
-              "first_class",
-              "second_class"
-            ],
-            "examples": [
-              "second_class"
-            ]
-          },
-          "state": {
-            "type": "string",
-            "description": "Only `BASE-EMPREINTE` considers this parameter.",
-            "enum": [
-              "Ile-de-France",
-              "Corsica"
-            ],
-            "examples": [
-              "Ile-de-France"
-            ]
-          },
-          "city_type": {
-            "type": "string",
-            "description": "Only `BASE-EMPREINTE` considers this parameter.",
-            "enum": [
-              "population_under_250000",
-              "population_above_250000"
-            ],
-            "examples": [
-              "population_above_250000"
-            ]
-          },
-          "country": {
-            "type": "string",
-            "description": "Only `BASE-EMPREINTE` considers this parameter.",
-            "enum": [
-              "AT",
-              "BE",
-              "CH",
-              "DE",
-              "DK",
-              "ES",
-              "FI",
-              "GB",
-              "GR",
-              "IE",
-              "IT",
-              "LU",
-              "NL",
-              "NO",
-              "PT",
-              "SE"
-            ],
-            "examples": [
-              "Ile-de-France"
-            ]
-          },
-          "year": {
-            "type": "string",
-            "description": "Only `BASE-EMPREINTE` considers this parameter.",
-            "examples": [
-              "2022"
-            ]
-          }
-        }
       },
       "SquakeTrain": {
         "allOf": [
@@ -1931,7 +1983,8 @@
             ],
             "properties": {
               "type": {
-                "type": "string"
+                "const": "train",
+                "example": "train"
               },
               "methodology": {
                 "type": "string",
@@ -1954,9 +2007,7 @@
                   "tram",
                   "underground"
                 ],
-                "examples": [
-                  "average"
-                ]
+                "example": "average"
               },
               "fuel_type": {
                 "type": "string",
@@ -1968,24 +2019,18 @@
                   "hybrid",
                   "average"
                 ],
-                "examples": [
-                  "diesel"
-                ]
+                "example": "diesel"
               },
               "number_of_travelers": {
                 "type": "integer",
                 "minimum": 1,
                 "default": 1,
-                "examples": [
-                  2
-                ]
+                "example": 2
               },
               "operator_name": {
                 "type": "string",
                 "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
-                "examples": [
-                  "sncf"
-                ]
+                "example": "sncf"
               },
               "seat_type": {
                 "type": "string",
@@ -1995,9 +2040,7 @@
                   "first_class",
                   "second_class"
                 ],
-                "examples": [
-                  "second_class"
-                ]
+                "example": "second_class"
               },
               "state": {
                 "type": "string",
@@ -2006,9 +2049,7 @@
                   "Ile-de-France",
                   "Corsica"
                 ],
-                "examples": [
-                  "Ile-de-France"
-                ]
+                "example": "Ile-de-France"
               },
               "city_type": {
                 "type": "string",
@@ -2017,9 +2058,7 @@
                   "population_under_250000",
                   "population_above_250000"
                 ],
-                "examples": [
-                  "population_above_250000"
-                ]
+                "example": "population_above_250000"
               },
               "country": {
                 "type": "string",
@@ -2042,158 +2081,12 @@
                   "PT",
                   "SE"
                 ],
-                "examples": [
-                  "Ile-de-France"
-                ]
+                "example": "Ile-de-France"
               },
               "year": {
                 "type": "string",
                 "description": "Only `BASE-EMPREINTE` considers this parameter.",
-                "examples": [
-                  "2022"
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "DefraTrain": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Calculation-Base-Item"
-          },
-          {
-            "type": "object",
-            "title": "DefraTrain",
-            "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
-            "required": [
-              "type",
-              "methodology",
-              "number_of_travelers"
-            ],
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "methodology": {
-                "type": "string",
-                "enum": [
-                  "DEFRA"
-                ]
-              },
-              "train_type": {
-                "type": "string",
-                "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
-                "enum": [
-                  "average",
-                  "high_speed",
-                  "international",
-                  "light",
-                  "local_express",
-                  "mainline",
-                  "national",
-                  "regional",
-                  "tram",
-                  "underground"
-                ],
-                "examples": [
-                  "average"
-                ]
-              },
-              "fuel_type": {
-                "type": "string",
-                "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
-                "enum": [
-                  "diesel",
-                  "electricity",
-                  "hydrogen",
-                  "hybrid",
-                  "average"
-                ],
-                "examples": [
-                  "diesel"
-                ]
-              },
-              "number_of_travelers": {
-                "type": "integer",
-                "minimum": 1,
-                "default": 1,
-                "examples": [
-                  2
-                ]
-              },
-              "operator_name": {
-                "type": "string",
-                "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
-                "examples": [
-                  "sncf"
-                ]
-              },
-              "seat_type": {
-                "type": "string",
-                "description": "Used for `SQUAKE`.",
-                "default": "first_class",
-                "enum": [
-                  "first_class",
-                  "second_class"
-                ],
-                "examples": [
-                  "second_class"
-                ]
-              },
-              "state": {
-                "type": "string",
-                "description": "Only `BASE-EMPREINTE` considers this parameter.",
-                "enum": [
-                  "Ile-de-France",
-                  "Corsica"
-                ],
-                "examples": [
-                  "Ile-de-France"
-                ]
-              },
-              "city_type": {
-                "type": "string",
-                "description": "Only `BASE-EMPREINTE` considers this parameter.",
-                "enum": [
-                  "population_under_250000",
-                  "population_above_250000"
-                ],
-                "examples": [
-                  "population_above_250000"
-                ]
-              },
-              "country": {
-                "type": "string",
-                "description": "Only `BASE-EMPREINTE` considers this parameter.",
-                "enum": [
-                  "AT",
-                  "BE",
-                  "CH",
-                  "DE",
-                  "DK",
-                  "ES",
-                  "FI",
-                  "GB",
-                  "GR",
-                  "IE",
-                  "IT",
-                  "LU",
-                  "NL",
-                  "NO",
-                  "PT",
-                  "SE"
-                ],
-                "examples": [
-                  "Ile-de-France"
-                ]
-              },
-              "year": {
-                "type": "string",
-                "description": "Only `BASE-EMPREINTE` considers this parameter.",
-                "examples": [
-                  "2022"
-                ]
+                "example": "2022"
               }
             }
           }

@@ -5,10 +5,2100 @@
     "description": "",
     "version": "1.0.0"
   },
-  "tags": [],
-  "paths": {},
+  "tags": [
+    {
+      "name": "pet"
+    },
+    {
+      "name": "store"
+    },
+    {
+      "name": "user"
+    }
+  ],
+  "paths": {
+    "/pet": {
+      "post": {
+        "summary": "Add a new pet to the store.",
+        "deprecated": false,
+        "description": "Add a new pet to the store.",
+        "operationId": "addPet",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet2"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "headers": {}
+          },
+          "422": {
+            "description": "Validation exception",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Update an existing pet(⭐️Update at June 13.v8).",
+        "deprecated": false,
+        "description": "Update an existing pet by Id.",
+        "operationId": "updatePet",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet2"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {}
+          },
+          "404": {
+            "description": "Pet not found",
+            "headers": {}
+          },
+          "422": {
+            "description": "Validation exception",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/pet/{petId}": {
+      "delete": {
+        "summary": "Deletes a pet.",
+        "deprecated": false,
+        "description": "Delete a pet.",
+        "operationId": "deletePet",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "Pet id to delete",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet deleted",
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid pet value",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Find pet by ID.",
+        "deprecated": false,
+        "description": "Returns a single pet.",
+        "operationId": "getPetById",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet2"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {}
+          },
+          "404": {
+            "description": "Pet not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          },
+          "x-404:记录不存在": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          },
+          "x-400:参数不正确": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Updates a pet in the store with form data.",
+        "deprecated": false,
+        "description": "Updates a pet resource based on the form data.",
+        "operationId": "updatePetWithForm",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet that needs to be updated",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of pet that needs to be updated",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status of pet that needs to be updated",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet2"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/pet/findByStatus": {
+      "get": {
+        "summary": "Finds Pets by status.",
+        "deprecated": false,
+        "description": "Multiple status values can be provided with comma separated strings.",
+        "operationId": "findPetsByStatus",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "available",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet2"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid status value",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/pet/{petId}/uploadImage": {
+      "post": {
+        "summary": "Uploads an image.",
+        "deprecated": false,
+        "description": "Upload image of the pet.",
+        "operationId": "uploadFile",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to update",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "additionalMetadata",
+            "in": "query",
+            "description": "Additional Metadata",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "No file uploaded",
+            "headers": {}
+          },
+          "404": {
+            "description": "Pet not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/pet/findByTags": {
+      "get": {
+        "summary": "Finds Pets by tags.",
+        "deprecated": false,
+        "description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+        "operationId": "findPetsByTags",
+        "tags": [
+          "pet"
+        ],
+        "parameters": [
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Tags to filter by",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet2"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid tag value",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/store/order": {
+      "post": {
+        "summary": "Place an order for a pet.",
+        "deprecated": false,
+        "description": "Place a new order in the store.",
+        "operationId": "placeOrder",
+        "tags": [
+          "store"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "headers": {}
+          },
+          "422": {
+            "description": "Validation exception",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "OrderController"
+      }
+    },
+    "/store/order/{orderId}": {
+      "delete": {
+        "summary": "Delete purchase order by identifier.",
+        "deprecated": false,
+        "description": "For valid response try integer IDs with value < 1000. Anything above 1000 or non-integers will generate API errors.",
+        "operationId": "deleteOrder",
+        "tags": [
+          "store"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of the order that needs to be deleted",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "order deleted",
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {}
+          },
+          "404": {
+            "description": "Order not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "OrderController"
+      },
+      "get": {
+        "summary": "Find purchase order by ID.",
+        "deprecated": false,
+        "description": "For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.",
+        "operationId": "getOrderById",
+        "tags": [
+          "store"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of order that needs to be fetched",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid ID supplied",
+            "headers": {}
+          },
+          "404": {
+            "description": "Order not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "OrderController"
+      }
+    },
+    "/store/inventory": {
+      "get": {
+        "summary": "Returns pet inventories by status.",
+        "deprecated": false,
+        "description": "Returns a map of status codes to quantities.",
+        "operationId": "getInventory",
+        "tags": [
+          "store"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "OrderController"
+      }
+    },
+    "/user/logout": {
+      "get": {
+        "summary": "Logs out current logged in user session.",
+        "deprecated": false,
+        "description": "Log user out of the system.",
+        "operationId": "logoutUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/user": {
+      "post": {
+        "summary": "Create user.",
+        "deprecated": false,
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "UserController"
+      }
+    },
+    "/user/createWithList": {
+      "post": {
+        "summary": "Creates list of users with given input array.",
+        "deprecated": false,
+        "description": "Creates list of users with given input array.",
+        "operationId": "createUsersWithListInput",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "UserController"
+      }
+    },
+    "/user/{username}": {
+      "put": {
+        "summary": "Update user resource.",
+        "deprecated": false,
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "name that need to be deleted",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {}
+          },
+          "400": {
+            "description": "bad request",
+            "headers": {}
+          },
+          "404": {
+            "description": "user not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": [],
+        "x-swagger-router-controller": "UserController"
+      },
+      "delete": {
+        "summary": "Delete user resource.",
+        "deprecated": false,
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deleteUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be deleted",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted",
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid username supplied",
+            "headers": {}
+          },
+          "404": {
+            "description": "User not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Get user by user name.",
+        "deprecated": false,
+        "description": "Get user detail based on username.",
+        "operationId": "getUserByName",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid username supplied",
+            "headers": {}
+          },
+          "404": {
+            "description": "User not found",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/login": {
+      "get": {
+        "summary": "Logs user into the system.",
+        "deprecated": false,
+        "description": "Log into the system.",
+        "operationId": "loginUser",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "The user name for login",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "The password for login in clear text",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "X-Expires-After": {
+                "description": "date in UTC when token expires",
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied",
+            "headers": {}
+          },
+          "500": {
+            "description": "Unexpected error",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/createWithArray": {
+      "post": {
+        "summary": "Creates list of users with given input array",
+        "deprecated": false,
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserArray"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/test/new": {
+      "get": {
+        "summary": "测试是否备份",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
   "components": {
-    "schemas": {},
+    "schemas": {
+      "400": {
+        "$ref": "#/components/schemas/API-Error"
+      },
+      "401": {
+        "$ref": "#/components/schemas/API-Error"
+      },
+      "404": {
+        "$ref": "#/components/schemas/API-Error"
+      },
+      "Pet": {
+        "type": "object",
+        "required": [
+          "name",
+          "photoUrls"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "name": {
+            "type": "string",
+            "example": "doggie"
+          },
+          "photoUrls": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "type": "string",
+              "xml": {
+                "name": "photoUrl"
+              }
+            }
+          },
+          "tags": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "pet status in the store",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        },
+        "xml": {
+          "name": "Pet"
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Category"
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Tag"
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "xml": {
+          "name": "##default"
+        },
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Carbon-Unit": {
+        "type": "string",
+        "title": "Carbon Unit",
+        "description": "SQUAKE uses The International System of Units (SI), commonly referred to as \"metric system\".",
+        "enum": [
+          "tonne",
+          "kilogram",
+          "gram"
+        ],
+        "example": "tonne"
+      },
+      "Category1": {
+        "x-swagger-router-model": "io.swagger.petstore.model.Category",
+        "type": "object",
+        "xml": {
+          "name": "category"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Dogs"
+          }
+        }
+      },
+      "Distance-Unit": {
+        "type": "string",
+        "title": "Distance-Unit",
+        "description": "SQUAKE uses common distance units",
+        "default": "kilometer",
+        "enum": [
+          "meter",
+          "kilometer",
+          "feet",
+          "mile",
+          "nautical_mile"
+        ],
+        "example": "kilometer"
+      },
+      "Pet2": {
+        "x-swagger-router-model": "io.swagger.petstore.model.Pet",
+        "type": "object",
+        "required": [
+          "name",
+          "photoUrls"
+        ],
+        "xml": {
+          "name": "pet"
+        },
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/Category1"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "doggie"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag3"
+            },
+            "xml": {
+              "wrapped": true
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "pet status in the store",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          },
+          "photoUrls": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "type": "string",
+              "xml": {
+                "name": "photoUrl"
+              }
+            }
+          }
+        }
+      },
+      "Calculation-Items": {
+        "title": "Carbon Emission Calculation Types",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/Flight"
+          },
+          {
+            "$ref": "#/components/schemas/Train"
+          }
+        ]
+      },
+      "AnyOf": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {}
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "$ref": "#/components/schemas/Tag3"
+      },
+      "Tag3": {
+        "x-swagger-router-model": "io.swagger.petstore.model.Tag",
+        "type": "object",
+        "xml": {
+          "name": "tag"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Carbon-Activity-Type": {
+        "type": "string",
+        "title": "Carbon-Activity-Type",
+        "enum": [
+          "accommodation",
+          "air_freight",
+          "bus",
+          "camping_site",
+          "car",
+          "co2_amount",
+          "coffee_production",
+          "cruise",
+          "expenditure",
+          "ferry",
+          "flight",
+          "general",
+          "hotel",
+          "logistics",
+          "logistics_site",
+          "money_amount",
+          "private_jet",
+          "sea_freight",
+          "inland_waterways",
+          "train",
+          "rail_freight",
+          "road_freight",
+          "van"
+        ],
+        "example": "air_freight"
+      },
+      "Order": {
+        "x-swagger-router-model": "io.swagger.petstore.model.Order",
+        "type": "object",
+        "xml": {
+          "name": "order"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "petId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 198772
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7
+          },
+          "shipDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "complete": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "description": "Order Status",
+            "enum": [
+              "placed",
+              "approved",
+              "delivered"
+            ],
+            "example": "approved"
+          }
+        }
+      },
+      "Emissions-Calculation-Methodology": {
+        "type": "string",
+        "title": "Emissions-Calculation-Methodology",
+        "enum": [
+          "ACRISS",
+          "ADEME",
+          "BASIC",
+          "CLEAN-CARGO",
+          "CO2-EMISSIEFACTOREN-NL",
+          "DIN-EN-16258",
+          "DEFRA",
+          "EU-EEA",
+          "EU-EMSA",
+          "US-EPA",
+          "HCMI",
+          "OFNK",
+          "ECTA",
+          "GLEC",
+          "ICAO",
+          "TIM",
+          "SQUAKE"
+        ],
+        "example": "GLEC"
+      },
+      "User": {
+        "x-swagger-router-model": "io.swagger.petstore.model.User",
+        "type": "object",
+        "xml": {
+          "name": "user"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "username": {
+            "type": "string",
+            "example": "theUser"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "James"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          },
+          "phone": {
+            "type": "string",
+            "example": "12345"
+          },
+          "userStatus": {
+            "type": "integer",
+            "description": "User Status",
+            "format": "int32",
+            "example": 1
+          }
+        }
+      },
+      "SQUAKE-Request-Id": {
+        "id": "2620f69f89024",
+        "key": "SQUAKE-Request-Id",
+        "name": "SQUAKE-Request-Id",
+        "style": "simple",
+        "description": "Unique identifier linked to this API request. If you need to contact us regarding a specific request, providing the request identifier helps the resolution process.",
+        "schema": {
+          "$ref": "#/components/schemas/436e3e894a8d1"
+        },
+        "explicitProperties": [
+          "name",
+          "in",
+          "schema",
+          "description"
+        ]
+      },
+      "436e3e894a8d1": {
+        "type": "string",
+        "pattern": "req_[a-zA-Z0-9-]+",
+        "example": "req_70394c00-728e-4d70-90bc-2b589c9ebdf8"
+      },
+      "Calculation-Base-Item": {
+        "type": "object",
+        "properties": {
+          "audit": {
+            "type": "boolean",
+            "title": "Distance-Unit",
+            "description": "SQUAKE provides you the option to create audit records for your calculations requests. **Note:** to use this feature you need to have it enabled for your account, please contact us for more information.",
+            "default": false
+          }
+        }
+      },
+      "API-ErrorSource": {
+        "type": "object",
+        "title": "API-ErrorSource",
+        "required": [
+          "attribute"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "attribute": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          }
+        }
+      },
+      "API-Error": {
+        "type": "array",
+        "title": "API Error",
+        "items": {
+          "type": "object",
+          "required": [
+            "code"
+          ],
+          "properties": {
+            "source": {
+              "$ref": "#/components/schemas/API-ErrorSource",
+              "description": "An object containing references to the primary source of the error"
+            },
+            "detail": {
+              "type": "string",
+              "description": "A human-readable explanation specific to this occurrence of the problem. Like title, this field's value can be localized."
+            },
+            "code": {
+              "type": "string",
+              "description": "An application-specific error code, expressed as a string value.",
+              "enum": [
+                "field_validation_error",
+                "server_error",
+                "not_authorized",
+                "not_found",
+                "invalid_methodology",
+                "invalid_type"
+              ],
+              "example": "field_validation_error"
+            }
+          }
+        }
+      },
+      "Flight": {
+        "type": "object",
+        "title": "Flight",
+        "required": [
+          "type",
+          "methodology"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ICAOFlight"
+          },
+          {
+            "$ref": "#/components/schemas/DefraFlight"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "methodology",
+          "mapping": {
+            "icao": "#/definitions/175788052",
+            "defra": "#/definitions/175788053"
+          }
+        },
+        "properties": {
+          "methodology": {
+            "type": "string"
+          },
+          "type": {
+            "const": "flight",
+            "example": "flight"
+          },
+          "booking_class": {
+            "type": "string",
+            "description": "If you don't pass a `booking_class` then `fare_class` and `airline` are required. SQUAKE will then automatically resolve the correct `booking_class`; used for `DEFRA`, `CO2-EMISSIEFACTOREN-NL`, `TIM`, `GATE4` and `ICAO`. For `CO2-EMISSIEFACTOREN-NL` this is optional with `average` as the default value. For `DEFRA` `average` is the default, while `economy` is the default for `TIM`, `ICAO` and `GATE4`.",
+            "enum": [
+              "first",
+              "premium_economy",
+              "economy",
+              "business"
+            ],
+            "example": "economy"
+          },
+          "number_of_travelers": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "default": 1,
+            "example": 2
+          },
+          "aircraft_size": {
+            "type": "string",
+            "description": "An estimation of the aircraft's size based on the number of seats; used for `ADEME` and `BASE-EMPREINTE`.",
+            "enum": [
+              "under_50_seats",
+              "under_100_seats",
+              "under_180_seats",
+              "under_250_seats",
+              "over_250_seats"
+            ],
+            "example": "under_100_seats"
+          }
+        }
+      },
+      "Train": {
+        "type": "object",
+        "title": "Train",
+        "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
+        "required": [
+          "type",
+          "methodology",
+          "number_of_travelers"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DefraTrain"
+          },
+          {
+            "$ref": "#/components/schemas/SquakeTrain"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "methodology",
+          "mapping": {
+            "icao": "#/definitions/175788054",
+            "defra": "#/definitions/175788055"
+          }
+        },
+        "properties": {
+          "methodology": {
+            "type": "string"
+          },
+          "type": {
+            "const": "train",
+            "example": "train"
+          },
+          "train_type": {
+            "type": "string",
+            "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
+            "enum": [
+              "average",
+              "high_speed",
+              "international",
+              "light",
+              "local_express",
+              "mainline",
+              "national",
+              "regional",
+              "tram",
+              "underground"
+            ],
+            "example": "average"
+          },
+          "fuel_type": {
+            "type": "string",
+            "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
+            "enum": [
+              "diesel",
+              "electricity",
+              "hydrogen",
+              "hybrid",
+              "average"
+            ],
+            "example": "diesel"
+          },
+          "number_of_travelers": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 1,
+            "example": 2
+          },
+          "operator_name": {
+            "type": "string",
+            "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
+            "example": "sncf"
+          },
+          "seat_type": {
+            "type": "string",
+            "description": "Used for `SQUAKE`.",
+            "default": "first_class",
+            "enum": [
+              "first_class",
+              "second_class"
+            ],
+            "example": "second_class"
+          },
+          "state": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "enum": [
+              "Ile-de-France",
+              "Corsica"
+            ],
+            "example": "Ile-de-France"
+          },
+          "city_type": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "enum": [
+              "population_under_250000",
+              "population_above_250000"
+            ],
+            "example": "population_above_250000"
+          },
+          "country": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "enum": [
+              "AT",
+              "BE",
+              "CH",
+              "DE",
+              "DK",
+              "ES",
+              "FI",
+              "GB",
+              "GR",
+              "IE",
+              "IT",
+              "LU",
+              "NL",
+              "NO",
+              "PT",
+              "SE"
+            ],
+            "example": "Ile-de-France"
+          },
+          "year": {
+            "type": "string",
+            "description": "Only `BASE-EMPREINTE` considers this parameter.",
+            "example": "2022"
+          }
+        }
+      },
+      "ICAOFlight": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Calculation-Base-Item"
+          },
+          {
+            "type": "object",
+            "title": "ICAO Flight",
+            "required": [
+              "type",
+              "methodology"
+            ],
+            "properties": {
+              "type": {
+                "const": "flight",
+                "example": "flight"
+              },
+              "methodology": {
+                "type": "string",
+                "enum": [
+                  "ICAO"
+                ]
+              },
+              "booking_class": {
+                "type": "string",
+                "description": "If you don't pass a `booking_class` then `fare_class` and `airline` are required. SQUAKE will then automatically resolve the correct `booking_class`; used for `DEFRA`, `CO2-EMISSIEFACTOREN-NL`, `TIM`, `GATE4` and `ICAO`. For `CO2-EMISSIEFACTOREN-NL` this is optional with `average` as the default value. For `DEFRA` `average` is the default, while `economy` is the default for `TIM`, `ICAO` and `GATE4`.",
+                "enum": [
+                  "first",
+                  "premium_economy",
+                  "economy",
+                  "business"
+                ],
+                "example": "economy"
+              },
+              "number_of_travelers": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1,
+                "default": 1,
+                "example": 2
+              },
+              "aircraft_size": {
+                "type": "string",
+                "description": "An estimation of the aircraft's size based on the number of seats; used for `ADEME` and `BASE-EMPREINTE`.",
+                "enum": [
+                  "under_50_seats",
+                  "under_100_seats",
+                  "under_180_seats",
+                  "under_250_seats",
+                  "over_250_seats"
+                ],
+                "example": "under_100_seats"
+              },
+              "fare_class": {
+                "type": "string",
+                "description": "The combination of `fare_class` and `airline` is mutually exclusive with `booking_class`. This is a single letter e.g. `Y`, `J`, etc.",
+                "example": "B"
+              },
+              "airline": {
+                "type": "string",
+                "description": "The IATA Designator of an airline, e.g., 2-digit format like `LH` or 3-digit format like `220`. Airline names and ICAO codes are also supported, SQUAKE will then automatically resolve it. The combination of `fare_class` and `airline` is mutually exclusive with `booking_class`.",
+                "example": "`LH` / `220` or `Lufthansa` or `DLH`, `DL` / `006` or `Delta Airlines` or `DAL`"
+              },
+              "flight_number": {
+                "type": "string",
+                "description": "Flight numbers should include the airline designator, for example `BA115` is accepted but `115` also works with passed separately `airline`; used for `TIM` and `GATE4`.",
+                "example": "BA115"
+              }
+            }
+          }
+        ]
+      },
+      "DefraFlight": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Calculation-Base-Item"
+          },
+          {
+            "type": "object",
+            "title": "DEFRA Flight",
+            "required": [
+              "type",
+              "methodology"
+            ],
+            "properties": {
+              "radiative_forcing_index": {
+                "type": "boolean",
+                "description": "Controls if a multiplier that factors in gases emitted to the atmosphere when flying at altitude should be applied; used for `BASE-EMPREINTE`, `DEFRA` and `CO2-EMISSIEFACTOREN-NL`.",
+                "default": true
+              },
+              "biofuel": {
+                "type": "boolean",
+                "default": false,
+                "description": "Used for `TU-CHALMERS`"
+              },
+              "type": {
+                "const": "flight",
+                "example": "flight"
+              },
+              "methodology": {
+                "type": "string",
+                "enum": [
+                  "DEFRA"
+                ],
+                "example": "ICAO"
+              },
+              "booking_class": {
+                "type": "string",
+                "description": "If you don't pass a `booking_class` then `fare_class` and `airline` are required. SQUAKE will then automatically resolve the correct `booking_class`; used for `DEFRA`, `CO2-EMISSIEFACTOREN-NL`, `TIM`, `GATE4` and `ICAO`. For `CO2-EMISSIEFACTOREN-NL` this is optional with `average` as the default value. For `DEFRA` `average` is the default, while `economy` is the default for `TIM`, `ICAO` and `GATE4`.",
+                "enum": [
+                  "first",
+                  "premium_economy",
+                  "economy",
+                  "business"
+                ],
+                "example": "economy"
+              },
+              "number_of_travelers": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1,
+                "default": 1,
+                "example": 2
+              },
+              "plane_type": {
+                "type": "string",
+                "default": "scheduled",
+                "description": "Used for `TU-CHALMERS`",
+                "enum": [
+                  "scheduled",
+                  "charter"
+                ],
+                "example": "scheduled"
+              }
+            }
+          }
+        ]
+      },
+      "DefraTrain": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Calculation-Base-Item"
+          },
+          {
+            "type": "object",
+            "title": "DefraTrain",
+            "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
+            "required": [
+              "type",
+              "methodology",
+              "number_of_travelers"
+            ],
+            "properties": {
+              "type": {
+                "const": "train",
+                "example": "train"
+              },
+              "methodology": {
+                "type": "string",
+                "enum": [
+                  "DEFRA"
+                ]
+              },
+              "train_type": {
+                "type": "string",
+                "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
+                "enum": [
+                  "average",
+                  "high_speed",
+                  "international",
+                  "light",
+                  "local_express",
+                  "mainline",
+                  "national",
+                  "regional",
+                  "tram",
+                  "underground"
+                ],
+                "example": "average"
+              },
+              "fuel_type": {
+                "type": "string",
+                "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
+                "enum": [
+                  "diesel",
+                  "electricity",
+                  "hydrogen",
+                  "hybrid",
+                  "average"
+                ],
+                "example": "diesel"
+              },
+              "number_of_travelers": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "example": 2
+              },
+              "operator_name": {
+                "type": "string",
+                "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
+                "example": "sncf"
+              },
+              "seat_type": {
+                "type": "string",
+                "description": "Used for `SQUAKE`.",
+                "default": "first_class",
+                "enum": [
+                  "first_class",
+                  "second_class"
+                ],
+                "example": "second_class"
+              },
+              "state": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "Ile-de-France",
+                  "Corsica"
+                ],
+                "example": "Ile-de-France"
+              },
+              "city_type": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "population_under_250000",
+                  "population_above_250000"
+                ],
+                "example": "population_above_250000"
+              },
+              "country": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "AT",
+                  "BE",
+                  "CH",
+                  "DE",
+                  "DK",
+                  "ES",
+                  "FI",
+                  "GB",
+                  "GR",
+                  "IE",
+                  "IT",
+                  "LU",
+                  "NL",
+                  "NO",
+                  "PT",
+                  "SE"
+                ],
+                "example": "Ile-de-France"
+              },
+              "year": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "example": "2022"
+              }
+            }
+          }
+        ]
+      },
+      "SquakeTrain": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Calculation-Base-Item"
+          },
+          {
+            "type": "object",
+            "title": "SquakeTrain",
+            "description": "The full list of operators supported by SQUAKE could be found [here](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e). If your operator is not supported, feel free to contact us.",
+            "required": [
+              "type",
+              "methodology",
+              "number_of_travelers"
+            ],
+            "properties": {
+              "type": {
+                "const": "train",
+                "example": "train"
+              },
+              "methodology": {
+                "type": "string",
+                "enum": [
+                  "SQUAKE"
+                ]
+              },
+              "train_type": {
+                "type": "string",
+                "description": "ADEME defaults to `local_express` and only considers `high_speed`, `mainline`, and `local_express`. SQUAKE's methodology defaults to `regional` without and `high_speed` with an `operator_name` given. CO2-EMISSIEFACTOREN-NL considers `average` and `international`, defaults to `average`, DEFRA considers `national`, `international`, `light`, `tram` and `underground`, defaults to `national`",
+                "enum": [
+                  "average",
+                  "high_speed",
+                  "international",
+                  "light",
+                  "local_express",
+                  "mainline",
+                  "national",
+                  "regional",
+                  "tram",
+                  "underground"
+                ],
+                "example": "average"
+              },
+              "fuel_type": {
+                "type": "string",
+                "description": "`CO2-EMISSIEFACTOREN-NL` considers `diesel`, `electricity` and `average`, defaults to `average`. `ADEME` considers `diesel` and `electricity`, defaults to `diesel`. `SQUAKE` considers `diesel`, `electricity`, `hydrogen`, and `hybrid`; defaults to `diesel`. If `operator_name` is passed, then `fuel_type` is ignored.",
+                "enum": [
+                  "diesel",
+                  "electricity",
+                  "hydrogen",
+                  "hybrid",
+                  "average"
+                ],
+                "example": "diesel"
+              },
+              "number_of_travelers": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "example": 2
+              },
+              "operator_name": {
+                "type": "string",
+                "description": "`SQUAKE`'s methodology allows passing the operator's name to get a more accurate result. `train_type` defaults to `high_speed` if `operator_name` is passed. Here is [the database](https://squake.notion.site/21a17389cc5c4e38946f97ecaf6435bb?v=6be41159e77247599fe9b3672782fd5e) with the supported operators.",
+                "example": "sncf"
+              },
+              "seat_type": {
+                "type": "string",
+                "description": "Used for `SQUAKE`.",
+                "default": "first_class",
+                "enum": [
+                  "first_class",
+                  "second_class"
+                ],
+                "example": "second_class"
+              },
+              "state": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "Ile-de-France",
+                  "Corsica"
+                ],
+                "example": "Ile-de-France"
+              },
+              "city_type": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "population_under_250000",
+                  "population_above_250000"
+                ],
+                "example": "population_above_250000"
+              },
+              "country": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "enum": [
+                  "AT",
+                  "BE",
+                  "CH",
+                  "DE",
+                  "DK",
+                  "ES",
+                  "FI",
+                  "GB",
+                  "GR",
+                  "IE",
+                  "IT",
+                  "LU",
+                  "NL",
+                  "NO",
+                  "PT",
+                  "SE"
+                ],
+                "example": "Ile-de-France"
+              },
+              "year": {
+                "type": "string",
+                "description": "Only `BASE-EMPREINTE` considers this parameter.",
+                "example": "2022"
+              }
+            }
+          }
+        ]
+      },
+      "UserArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/User"
+        }
+      }
+    },
     "securitySchemes": {}
   },
   "servers": [],

@@ -6,67 +6,7 @@
     "version": "1.0.0"
   },
   "tags": [],
-  "paths": {
-    "/module/test1": {
-      "get": {
-        "summary": "测试导出",
-        "deprecated": false,
-        "description": "",
-        "tags": [],
-        "parameters": [
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "description": "Request Unique Identifier",
-            "required": true,
-            "example": "",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "X-Language",
-            "in": "header",
-            "description": "",
-            "example": "zh",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "zh",
-                "en"
-              ]
-            }
-          },
-          {
-            "name": "X-Project-Uuid",
-            "in": "header",
-            "description": "Project Number",
-            "example": "{{X-Project-Uuid}}",
-            "schema": {
-              "type": "string",
-              "default": "{{X-Project-Uuid}}"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": []
-      }
-    }
-  },
+  "paths": {},
   "components": {
     "schemas": {},
     "securitySchemes": {}

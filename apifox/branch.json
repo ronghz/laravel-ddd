@@ -6,74 +6,8 @@
     "version": "1.0.0",
     "x-ext-example": "这里是示例 OAS info 的扩展"
   },
-  "tags": [
-    {
-      "name": "branch1"
-    }
-  ],
-  "paths": {
-    "/branch/test1": {
-      "get": {
-        "summary": "子分支接口",
-        "deprecated": false,
-        "description": "",
-        "tags": [
-          "branch1"
-        ],
-        "parameters": [
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "description": "Request Unique Identifier",
-            "required": true,
-            "example": "",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "X-Language",
-            "in": "header",
-            "description": "",
-            "example": "zh",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "zh",
-                "en"
-              ]
-            }
-          },
-          {
-            "name": "X-Project-Uuid",
-            "in": "header",
-            "description": "Project Number",
-            "example": "{{X-Project-Uuid}}",
-            "schema": {
-              "type": "string",
-              "default": "{{X-Project-Uuid}}"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": []
-      }
-    }
-  },
+  "tags": [],
+  "paths": {},
   "components": {
     "schemas": {},
     "securitySchemes": {}

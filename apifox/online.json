@@ -1530,8 +1530,8 @@
         "discriminator": {
           "propertyName": "methodology",
           "mapping": {
-            "icao": "#/definitions/175788052",
-            "defra": "#/definitions/175788053"
+            "icao": "#/components/schemas/ICAOFlight",
+            "defra": "#/components/schemas/DefraFlight"
           }
         },
         "properties": {
@@ -1594,8 +1594,8 @@
         "discriminator": {
           "propertyName": "methodology",
           "mapping": {
-            "icao": "#/definitions/175788054",
-            "defra": "#/definitions/175788055"
+            "icao": "#/components/schemas/DefraTrain",
+            "defra": "#/components/schemas/SquakeTrain"
           }
         },
         "properties": {

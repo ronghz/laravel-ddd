@@ -205,52 +205,6 @@
           "500": {
             "description": "Unexpected error",
             "headers": {}
-          },
-          "x-404:记录不存在": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message"
-                  ]
-                }
-              }
-            },
-            "headers": {}
-          },
-          "x-400:参数不正确": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message"
-                  ]
-                }
-              }
-            },
-            "headers": {}
           }
         },
         "security": []

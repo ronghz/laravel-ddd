@@ -195,61 +195,15 @@
             "headers": {}
           },
           "400": {
-            "description": "Invalid ID supplied",
-            "headers": {}
+            "$ref": "#/components/responses/参数不正确",
+            "description": ""
           },
           "404": {
-            "description": "Pet not found",
-            "headers": {}
+            "$ref": "#/components/responses/记录不存在",
+            "description": ""
           },
           "500": {
             "description": "Unexpected error",
-            "headers": {}
-          },
-          "x-404:记录不存在": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message"
-                  ]
-                }
-              }
-            },
-            "headers": {}
-          },
-          "x-400:参数不正确": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message"
-                  ]
-                }
-              }
-            },
             "headers": {}
           }
         },
@@ -953,6 +907,7 @@
             },
             "headers": {
               "X-Rate-Limit": {
+                "required": false,
                 "description": "calls per hour allowed by the user",
                 "schema": {
                   "type": "integer",
@@ -960,6 +915,7 @@
                 }
               },
               "X-Expires-After": {
+                "required": false,
                 "description": "date in UTC when token expires",
                 "schema": {
                   "type": "string",
@@ -2096,6 +2052,52 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/User"
+        }
+      }
+    },
+    "responses": {
+      "记录不存在": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "参数不正确": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
         }
       }
     },

@@ -128,7 +128,7 @@
             "in": "path",
             "description": "Pet id to delete",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -175,7 +175,7 @@
             "in": "path",
             "description": "ID of pet to return",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -223,7 +223,7 @@
             "in": "path",
             "description": "ID of pet that needs to be updated",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -340,7 +340,7 @@
             "in": "path",
             "description": "ID of pet to update",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -507,7 +507,7 @@
             "in": "path",
             "description": "ID of the order that needs to be deleted",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -549,7 +549,7 @@
             "in": "path",
             "description": "ID of order that needs to be fetched",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer",
               "format": "int64"
